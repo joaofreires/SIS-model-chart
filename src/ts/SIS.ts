@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { times } from 'lodash'
 
 export default class SIS {
   private _beta : number
@@ -35,11 +35,11 @@ export default class SIS {
   }
 
   public IPeriod (start : number = 0, end: number, increment : number = 1) : Array<number> {
-    return _.times(Math.floor((end - start) / increment), (t) => this.I(t))
+    return times(Math.floor((end - start) / increment), (t) => this.I(t))
   }
 
   public SPeriod (start : number = 0, end: number, increment : number = 1) : Array<number> {
-    return _.times(Math.floor((end - start) / increment), (t) => this.S(t))
+    return times(Math.floor((end - start) / increment), (t) => this.S(t))
   }
 
   public I (t : number) : number {

@@ -1,6 +1,6 @@
 import { Chart, LineController, LineElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Legend } from 'chart.js'
 import SIS from './SIS'
-import _ from 'lodash'
+import { range, debounce } from 'lodash'
 
 Chart.register(LineController, LineElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Legend)
 
@@ -10,7 +10,7 @@ const DEFAULT_PERIOD_END = 100
 let timePeriod = DEFAULT_PERIOD_END
 let newTimePeriod = timePeriod
 const data : any = {
-  x: _.range(100),
+  x: range(timePeriod),
   I: SISModel.IPeriod(0, timePeriod),
   S: SISModel.SPeriod(0, timePeriod)
 }
@@ -80,7 +80,7 @@ const config : any = {
 function rebuildDatasets () {
   if (timePeriod !== newTimePeriod) {
     timePeriod = newTimePeriod
-    chart.data.labels = _.range(timePeriod)
+    chart.data.labels = range(timePeriod)
   }
   chart.data.datasets[0].data = SISModel.IPeriod(0, timePeriod)
   chart.data.datasets[1].data = SISModel.SPeriod(0, timePeriod)
@@ -89,7 +89,7 @@ function rebuildDatasets () {
   chart.update()
 }
 
-const debouncedRebuildDatasets = _.debounce(() => rebuildDatasets(), 200)
+const debouncedRebuildDatasets = debounce(() => rebuildDatasets(), 200)
 
 window.onload = function () {
   const ctx = (<HTMLCanvasElement> document.getElementById('canvas')).getContext('2d')
