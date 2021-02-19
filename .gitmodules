@@ -1,0 +1,4 @@
+[submodule "dist"]
+    path = dist
+    url = https://github.com/joaofreires/SIS-model-chart.git
+    branch = gh-pages
