@@ -23,7 +23,7 @@ const config : any = {
     datasets: [
       {
         id: 'I',
-        label: 'I',
+        label: 'Infectious',
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 99, 132)',
         data: data.I
@@ -31,7 +31,7 @@ const config : any = {
       },
       {
         id: 'S',
-        label: 'S',
+        label: 'Susceptible',
         backgroundColor: 'rgb(132, 99, 255)',
         borderColor: 'rgb(132, 99, 255)',
         data: data.S
